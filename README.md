@@ -108,6 +108,6 @@ The data is sourced from **SINAN**, the national system maintained by the Brazil
 | `IN_VINCULA` | Linked case |
 | `TRANSF` | Transfer to another unit |
 | `UF_TRANSF`, `MUN_TRANSF` | State and municipality of transfer |
-| `NU_COMU_EX` | Inter-municipality communication code |
+| `NU_COMU_EX` | No de contatos examinados ≤ No de contatos existentes. |
 
 ---
