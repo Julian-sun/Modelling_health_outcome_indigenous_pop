@@ -1,4 +1,6 @@
 *.csv
 *.dbf
 *.dbc
+*.parquet
+*.xlsx
 .venv/
