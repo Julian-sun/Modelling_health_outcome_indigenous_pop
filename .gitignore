@@ -1,0 +1,4 @@
+*.csv
+*.dbf
+*.dbc
+.venv/
