@@ -1,9 +1,12 @@
 from pathlib import Path
 import matplotlib.pyplot as plt
 import polars as pl
+import statsmodels.formula.api as smf
+import altair
 
 
 pl.Config().set_tbl_rows(20)
+pl.Config().set_tbl_cols(20)
 
 datasets = Path(__file__).absolute().parent.parent / "datasets/trusted/"
 
@@ -34,51 +37,55 @@ df05_14 = (
     .sort(by="DT_NOTIFIC")
     .rename({"ID_MN_RESI": "co_ibge"})
     .with_columns(
-        pl.col("co_ibge").cast(pl.Int32).alias("co_ibge")
+        pl.col("co_ibge").cast(pl.Int32).alias("co_ibge"),
+        pl.col("DT_NOTIFIC").map_elements(lambda x: str(x)[:-3], return_dtype=pl.String).alias("year_month"),
+        pl.lit(1).alias("dummy")
     )
 )
 
 count = df05_14.group_by(
-    ["DT_NOTIFIC", "co_ibge"]
-).len().rename({"len": "cases"})
+    ["year_month", "co_ibge"]
+).agg(pl.sum("dummy").alias("tuberculose")).sort(by="co_ibge")
 
-merge = df05_14.join_asof(
-    df_clima,
-    by="co_ibge",
-    left_on="DT_NOTIFIC",
-    right_on="data_inicio",
-    strategy="backward"
-).filter(
-    (pl.col("DT_NOTIFIC") <= pl.col("data_fim")) &
-    (pl.col("data_inicio") != pl.col("data_fim"))
-).join(count, on=["co_ibge", "DT_NOTIFIC"], how="left")
+pivot_clima = df_clima.pivot(
+    index=["data_inicio", "data_fim", "co_ibge"],
+    on="descricao_tipologia",
+    values="enfermos",
+    aggregate_function="sum"
+).with_columns(
+    pl.col("data_inicio")
+    .map_elements(lambda x: str(x)[:-3], return_dtype=pl.String)
+    .alias("year_month")
+).sort("co_ibge")
 
-
-df1 = merge.select(
-    "DT_NOTIFIC",
-    "ibge",
-    "data_inicio",
-    "data_fim",
-    "descricao_tipologia",
-    "grupo_de_desastre",
-    "obitos",
-    "feridos",
-    "enfermos",
-    "SITUA_ENCE",
-    "co_ibge",
-    "CS_SEXO",
-    "POP_RUA",
-    "cases"
+merge = count.join(
+    pivot_clima,
+    on=["year_month", "co_ibge"],
+    how="left"
+).with_columns(
+    (pl.col("data_fim") - pl.col("data_inicio")).alias("diff_dt")
 )
-print(df1)
+merge = merge.rename(
+    {col: col.replace(" ", "_").replace("/", "_")  for col in merge.columns}
+).filter(pl.col("co_ibge") == 110020)
 
-df2 = df1.pivot(
-        index=["DT_NOTIFIC", "ibge"],
-        values="cases",
-        on="descricao_tipologia",
-        aggregate_function="sum"
-)
+print(merge)
+merge = merge.fill_null(0)
+events = merge.columns[5:-1]
 
-for col in df2.columns[2:]:
-    plt.plot(data=df2, scalex="DT_NOTIFIC", scaley=col, kind="line")
-    plt.show()
+merge.to_pandas().plot(x="year_month", y="tuberculose", kind="bar")
+plt.show()
+
+"""
+events = " + ".join(events)
+merge = merge.to_pandas()
+formula = f"tuberculose ~ {events} + C(co_ibge) + C(DT_NOTIFIC)"
+mod = smf.ols(formula, data=merge).fit(cov_type="cluster", cov_kwds={"groups": merge["co_ibge"]})
+print(mod.summary())
+
+
+# for col in df2.columns[2:]:
+#     plt.plot(df2.select("DT_NOTIFIC"), df2.select(col))
+#     plt.title(f"{col}")
+#     plt.show()
+"""
