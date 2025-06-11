@@ -5,3 +5,4 @@
 *.xlsx
 .venv/
 *.png
+*.ipynb_checkpoints/
