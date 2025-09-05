@@ -1,18 +1,12 @@
 # Aim of this repository
 
-<style>
-</style>
 
-In this repository we provide scripts for collecting, processing and analysing data on tuberculosis (TB). The processed data supports exploratory analyses and the evaluation of mathematical models to infor TB control, prevention, and reduction strategies, particularly in venerable populations. Codes that perform descriptive analyses and modelling are also available here and are described below.  In addition to TB data, we also report estimates of population and climate adverse events.
 
----
+In this repository we provide scripts for collecting, processing and analysing data on tuberculosis (TB). The processed data supports exploratory analyses and the evaluation of mathematical models to infor TB control, prevention, and reduction strategies, particularly in venerable populations. Codes that perform descriptive analyses and modelling are also available here and are described below. In addition to TB data, we also report estimates of population and climate adverse events.
 
 ## 🧾 Dataset Description
 
 ### TB data
-
-<style>
-</style>
 
 We gathered data on TB from the **Sistema de Informação de Agravos de
 Notificação (SINAN)** maintained by the Brazilian Ministry of Health (data
