@@ -1,12 +1,34 @@
 # Aim of this repository
 
-This repository is dedicated to collecting, processing, and analyzing tuberculosis (TB) data related to vulnerable populations in Brazil. The resulting datasets will support exploratory data analysis and the evaluation of mathematical models aimed at informing strategies for TB control, prevention, and reduction of morbidity and mortality.
+<style>
+</style>
+
+In this repository we provide scripts for collecting, processing and analysing data on tuberculosis (TB). The processed data supports exploratory analyses and the evaluation of mathematical models to infor TB control, prevention, and reduction strategies, particularly in venerable populations. Codes that perform descriptive analyses and modelling are also available here and are described below.  In addition to TB data, we also report estimates of population and climate adverse events.
 
 ---
 
 ## 🧾 Dataset Description
 
-This repository contains scripts and analysis outputs related to tuberculosis (TB) notifications in Brazil, based on data from the **Sistema de Informação de Agravos de Notificação (SINAN)**—the national notifiable disease information system maintained by the Brazilian Ministry of Health. While the raw data itself is not included due to privacy and access restrictions, the repository provides processed results and reproducible code used to explore TB trends, assess the burden among vulnerable populations (e.g., Indigenous communities), and support modelling efforts aimed at informing strategies for TB control, prevention, and reduction of morbidity and mortality in Brazil.
+### TB data
+
+<style>
+</style>
+
+We gathered data on TB from the **Sistema de Informação de Agravos de
+Notificação (SINAN)** maintained by the Brazilian Ministry of Health (data
+is stored in the Raw folder in our database). The data reports individualised
+and unidentified suspected tuberculosis cases, from 2005 to 2023. The following
+scripts are used in this step:
+
+1.     script x in folder y is used for downloading data;
+
+2.     script x in directory y is used for pre-formatting
+downloaded data and concatenating it into a single file;
+
+3.     script x in folder y selects and formats variables that
+we need for our work.
+
+The resulting data is stored in the Refined folder of our database.
 
 ---
 
