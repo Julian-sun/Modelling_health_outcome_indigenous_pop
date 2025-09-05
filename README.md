@@ -16,8 +16,7 @@ scripts are used in this step:
 
 2.     script [process.py](https://github.com/Julian-sun/Modelling_health_outcome_indigenous_pop/blob/main/scripts/process.py "process.py") in directory y is used for pre-formatting downloaded data and concatenating it into a single file;
 
-3.     script x in folder y selects and formats variables that
-we need for our work.
+3.     script [process_vars.py](https://github.com/Julian-sun/Modelling_health_outcome_indigenous_pop/blob/main/scripts/process_vars.py "process_vars.py") selects and formats variables that we need for our work.
 
 The resulting data is stored in the Refined folder of our database.
 
