@@ -14,11 +14,7 @@ is stored in the Raw folder in our database). The data reports individualised
 and unidentified suspected tuberculosis cases, from 2005 to 2023. The following
 scripts are used in this step:
 
-1.     script 
-
-```
-[downloads](https://github.com/Julian-sun/Modelling_health_outcome_indigenous_pop/blob/6729b6b6ef1e6c3743ed2e7353cfa5c05287aefc/scripts/downloads.py) 
-```
+1.     script [downloads.py](https://github.com/Julian-sun/Modelling_health_outcome_indigenous_pop/blob/6729b6b6ef1e6c3743ed2e7353cfa5c05287aefc/scripts/downloads.py)
 
 is used for downloading data;
 
