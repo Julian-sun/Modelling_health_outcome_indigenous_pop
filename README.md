@@ -1,7 +1,5 @@
 # Aim of this repository
 
-
-
 In this repository we provide scripts for collecting, processing and analysing data on tuberculosis (TB). The processed data supports exploratory analyses and the evaluation of mathematical models to infor TB control, prevention, and reduction strategies, particularly in venerable populations. Codes that perform descriptive analyses and modelling are also available here and are described below. In addition to TB data, we also report estimates of population and climate adverse events.
 
 ## 🧾 Dataset Description
@@ -14,12 +12,9 @@ is stored in the Raw folder in our database). The data reports individualised
 and unidentified suspected tuberculosis cases, from 2005 to 2023. The following
 scripts are used in this step:
 
-1.     script [downloads.py](https://github.com/Julian-sun/Modelling_health_outcome_indigenous_pop/blob/6729b6b6ef1e6c3743ed2e7353cfa5c05287aefc/scripts/downloads.py)
+1.     script [downloads.py](https://github.com/Julian-sun/Modelling_health_outcome_indigenous_pop/blob/6729b6b6ef1e6c3743ed2e7353cfa5c05287aefc/scripts/downloads.py) is used for downloading data;
 
-is used for downloading data;
-
-2.     script x in directory y is used for pre-formatting
-downloaded data and concatenating it into a single file;
+2.     script [process.py](https://github.com/Julian-sun/Modelling_health_outcome_indigenous_pop/blob/main/scripts/process.py "process.py") in directory y is used for pre-formatting downloaded data and concatenating it into a single file;
 
 3.     script x in folder y selects and formats variables that
 we need for our work.
@@ -120,14 +115,5 @@ The resulting data is stored in the Refined folder of our database.
 | `DOENCA_TRA`                            | History of TB treatment                   |
 | `SITUA_9_M`, `SITUA_12_M`, `SITUA_ENCE` | Status at 9/12 months and at case closure |
 | `DT_ENCERRA`                            | Date of case closure                      |
-
-### 8. Transfers & Case Linking
-
-| Variable                  | Description                                            |
-| ------------------------- | ------------------------------------------------------ |
-| `IN_VINCULA`              | Linked case                                            |
-| `TRANSF`                  | Transfer to another unit                               |
-| `UF_TRANSF`, `MUN_TRANSF` | State and municipality of transfer                     |
-| `NU_COMU_EX`              | No de contatos examinados ≤ No de contatos existentes. |
 
 ---
