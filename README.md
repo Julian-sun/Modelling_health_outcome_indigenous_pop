@@ -20,11 +20,13 @@ scripts are used in this step:
 
 The resulting data is stored in the Refined folder of our database.
 
+
+
 ---
 
-## 📚 Variable Dictionary Selected for our Study
+#### 📚 TB Variables Dictionary Selected for our Study
 
-### 1. Notification & Administrative Details
+##### 1. Notification & Administrative Details
 
 | Variable                                                                           | Description                                       |
 | ---------------------------------------------------------------------------------- | ------------------------------------------------- |
@@ -42,7 +44,7 @@ The resulting data is stored in the Refined folder of our database.
 | `MIGRADO_W`                                                                        | Flag for record migration                         |
 | `TPUNINOT`                                                                         | Type of unit where notification occurred          |
 
-### 2. Demographics
+##### 2. Demographics
 
 | Variable                                 | Description                            |
 | ---------------------------------------- | -------------------------------------- |
@@ -57,7 +59,7 @@ The resulting data is stored in the Refined folder of our database.
 | `ID_RG_RESI`                             | Regional health code of residence      |
 | `ID_PAIS`                                | Country of residence                   |
 
-### 3. Clinical & Diagnostic Information
+##### 3. Clinical & Diagnostic Information
 
 | Variable                                   | Description                      |
 | ------------------------------------------ | -------------------------------- |
@@ -73,7 +75,7 @@ The resulting data is stored in the Refined folder of our database.
 | `TEST_SENSI`                               | Drug sensitivity test            |
 | `BACILOSC_1` to `BACILOSC_6`, `BAC_APOS_6` | Follow-up bacilloscopy results   |
 
-### 4. Comorbidities and Risk Factors
+##### 4. Comorbidities and Risk Factors
 
 | Variable                                 | Description                                   |
 | ---------------------------------------- | --------------------------------------------- |
@@ -84,7 +86,7 @@ The resulting data is stored in the Refined folder of our database.
 | `AGRAVDROGA`                             | Illicit drug use                              |
 | `AGRAVTABAC`                             | Tobacco use                                   |
 
-### 5. Treatment & Medication
+##### 5. Treatment & Medication
 
 | Variable                                                                                    | Description                                   |
 | ------------------------------------------------------------------------------------------- | --------------------------------------------- |
@@ -96,7 +98,7 @@ The resulting data is stored in the Refined folder of our database.
 | `DT_MUDANCA`                                                                                | Treatment change date                         |
 | `ANT_RETRO`                                                                                 | Use of antiretrovirals (for HIV co-infection) |
 
-### 6. Special Populations
+##### 6. Special Populations
 
 | Variable    | Description                  |
 | ----------- | ---------------------------- |
@@ -106,7 +108,7 @@ The resulting data is stored in the Refined folder of our database.
 | `POP_IMIG`  | Immigrants                   |
 | `BENEF_GOV` | Receives government benefits |
 
-### 7. Follow-up & Outcomes
+##### 7. Follow-up & Outcomes
 
 | Variable                                | Description                               |
 | --------------------------------------- | ----------------------------------------- |
@@ -116,3 +118,27 @@ The resulting data is stored in the Refined folder of our database.
 | `DT_ENCERRA`                            | Date of case closure                      |
 
 ---
+
+### Climate and disaster events
+
+The climate and disaster events dataset compiles official records classified under the COBRADE system, at the municipal level, across Brazil. Each entry describes an event with information on municipality, state, region, disaster typology and group, as well as start and end dates.
+
+The data were obtained from the Integrated Disaster Information System (S2iD) platform. S2iD brings together various products of the National Secretariat for Protection and Civil Defense, with the aim of improving and providing transparency to risk and disaster management in Brazil through the computerization of processes and the provision of systematized information on that management.
+
+#### 📚 Climate and disaster events Variables Dictionary Selected for our Study
+
+| Coluna                  | Tipo     | Descrição                                                                                 |
+| ----------------------- | -------- | ----------------------------------------------------------------------------------------- |
+| **id_evento_grupo**     | `string` | Identificador único do evento, combinando código IBGE, código COBRADE e ordem sequencial. |
+| **protocolo**           | `string` | Código do protocolo oficial de registro do desastre (ex.: “RO-A-1100015-12200-20070223”). |
+| **tipo_documento**      | `string` | Tipo de documento associado ao registro (ex.: A = Avaliação, F = Formulário).             |
+| **ibge**                | `int`    | Código do município segundo o IBGE.                                                       |
+| **municipio**           | `string` | Nome do município afetado.                                                                |
+| **uf**                  | `string` | Unidade da Federação (sigla do estado).                                                   |
+| **cobrade**             | `int`    | Código COBRADE (Classificação e Codificação Brasileira de Desastres).                     |
+| **regiao**              | `string` | Região geográfica brasileira onde ocorreu o evento (Norte, Nordeste, etc.).               |
+| **tipologia**           | `int`    | Código da tipologia do desastre (categoria do COBRADE).                                   |
+| **descricao_tipologia** | `string` | Nome da tipologia do evento (ex.: Enxurradas, Chuvas Intensas, Estiagem).                 |
+| **grupo_de_desastre**   | `string` | Grupo principal do desastre (ex.: Hidrológico, Meteorológico, Climatológico, Outros).     |
+| **data_inicio**         | `date`   | Data de início do evento.                                                                 |
+| **data_fim**            | `date`   | Data de término do evento.                                                                |
